@@ -1,0 +1,19 @@
+# Chezmoi runtime state
+.chezmoi.yaml
+.chezmoi.json
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Sensitive files (if you add them)
+private_*
+*.key
+*.pem
