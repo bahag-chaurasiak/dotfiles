@@ -1,0 +1,14 @@
+pwd
+source nu
+ls
+ls -l
+cl
+zsh
+bash
+ls
+zu tmux
+z tmux
+source nu
+pwd
+zsh
+exit

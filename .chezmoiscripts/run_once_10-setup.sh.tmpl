@@ -1,0 +1,44 @@
+#!/bin/bash
+set -e
+
+echo "🔧 Running first-time setup tasks..."
+
+# Install starship if not present
+if ! command -v starship &> /dev/null; then
+  echo "📦 Installing starship..."
+  brew install starship
+else
+  echo "✅ Starship already installed"
+fi
+
+# Install oh-my-posh if not present
+if ! command -v oh-my-posh &> /dev/null; then
+  echo "📦 Installing oh-my-posh..."
+  brew install jandedobbeleer/oh-my-posh/oh-my-posh
+else
+  echo "✅ oh-my-posh already installed"
+fi
+
+# Make scripts in .local/bin executable
+if [ -d ~/.local/bin ]; then
+  echo "🔐 Making scripts in ~/.local/bin executable..."
+  chmod +x ~/.local/bin/* 2>/dev/null || true
+fi
+
+# Set zsh as default shell if not already
+if [ "$SHELL" != "/bin/zsh" ]; then
+  echo "🐚 Setting zsh as default shell..."
+  chsh -s /bin/zsh
+else
+  echo "✅ zsh is already the default shell"
+fi
+
+# Ensure starship is initialized in .zshrc
+if ! grep -q 'eval "$(starship init zsh)"' ~/.zshrc; then
+  echo "⭐ Adding starship initialization to .zshrc..."
+  echo 'eval "$(starship init zsh)"' >> ~/.zshrc
+else
+  echo "✅ Starship already initialized in .zshrc"
+fi
+
+echo "✨ First-time setup complete!"

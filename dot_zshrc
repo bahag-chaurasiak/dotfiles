@@ -1,0 +1,117 @@
+# =============================================================================
+# ZSHRC CONFIGURATION SUMMARY
+# =============================================================================
+#
+# This .zshrc file is organized into logical sections for easier maintenance:
+#
+# 1. ENVIRONMENT INITIALIZATION (Lines 50-85)
+#    - Locale settings for proper UTF-8 support
+#    - Core environment variables (EDITOR, GPG_TTY)
+#    - PATH configurations for various tools (pnpm, bun, Flutter, etc.)
+#    - FZF search configuration with comprehensive exclusions
+#    - Terminal-specific configurations (commented to prevent blocking)
+#
+# 2. SHELL AND PROMPT CONFIGURATION (Lines 90-120)
+#    - Zsh options and completion settings
+#    - Oh My Zsh framework initialization
+#    - Starship prompt configuration (initialized at end to avoid conflicts)
+#    - Key bindings for autosuggestions and navigation
+#
+# 3. ALIASES AND FUNCTIONS (Lines 125-230)
+#    - General command aliases (cl, la, flu, etc.)
+#    - Development tool shortcuts (docker, terraform, etc.)
+#    - Directory navigation aliases using zoxide (z command)
+#    - Enhanced cat function with bat integration
+#    - Navigation helper functions (cx, fcd, f, fv)
+#    - Google Cloud Platform authentication functions
+#    - Environment variable loading function (load_dotenv)
+#
+# 4. TOOL-SPECIFIC SETUPS AND COMPLETIONS (Lines 235-end)
+#    - FZF fuzzy finder integration
+#    - Deno JavaScript runtime
+#    - NVM (Node Version Manager)
+#    - Bun JavaScript runtime
+#    - Docker completions
+#    - Zoxide (smart cd replacement) - provides 'z' command
+#    - Starship prompt initialization (final step)
+#    - Terminal-specific integrations (Kiro)
+#    - Local environment setup
+#
+# KEY FEATURES:
+# - Uses 'z' (zoxide) instead of 'cd' for smart directory jumping
+# - Starship prompt for enhanced terminal experience
+# - FZF integration for fuzzy finding files and directories
+# - Comprehensive tool integrations (Docker, Node, Deno, etc.)
+# - Environment-specific configurations that don't interfere with IDEs
+#
+# TROUBLESHOOTING:
+# - If commands stop working, check that tools are installed via Homebrew
+# - Starship config is at ~/.config/starship/starship.toml
+# - Early returns for IDE terminals are commented out to prevent blocking
+# - All 'cd' aliases use 'z' consistently throughout the file
+# - Fixed bashcompinit syntax error (& changed to &&)
+#
+# =============================================================================
+# ENVIRONMENT INITIALIZATION
+# =============================================================================
+
+# Load unified shell environment (provides consistent PATH and environment variables)
+[ -f ~/.config/shell/env.sh ] && source ~/.config/shell/env.sh
+
+
+# Zoxide initialization is handled by tools.sh
+
+# Terminal-specific early returns (commented out to prevent blocking shell initialization)
+#echo "INTELLIJ_ENVIRONMENT_READER: '$INTELLIJ_ENVIRONMENT_READER'"
+#echo "TERMINAL_EMULATOR: '$TERMINAL_EMULATOR'"
+
+# =============================================================================
+# SHELL CONFIGURATION
+# =============================================================================
+# Shell-specific configurations and tool initializations are handled by tools.sh
+
+# =============================================================================
+# ALIASES AND UNIVERSAL FUNCTIONS
+# =============================================================================
+
+# Load universal shell functions
+[ -f ~/.config/shell/functions.sh ] && source ~/.config/shell/functions.sh
+
+# General aliases
+alias cl='clear'
+alias la=tree
+alias flu=flutter
+
+# Development tool aliases
+alias dc=docker
+alias tf=terraform
+alias pi=pnpm i
+
+# Docker aliases
+alias dps="docker ps"
+alias dpa="docker ps -a"
+alias dl="docker ps -l -q"
+alias dx="docker exec -it"
+
+# Directory navigation aliases using zoxide
+alias ..="z .."
+alias ...="z ../.."
+alias ....="z ../../.."
+alias .....="z ../../../.."
+alias ......="z ../../../../.."
+
+# =============================================================================
+# TOOL INITIALIZATION
+# =============================================================================
+
+# Load standardized tool initialization
+[ -f ~/.config/shell/tools.sh ] && source ~/.config/shell/tools.sh
+
+# Load local environment setup (if not already loaded by environment setup)
+[ -s "$HOME/.local/bin/env" ] && source "$HOME/.local/bin/env"
+
+
+
+# bun completions
+[ -s "/Users/chaurasiak/.bun/_bun" ] && source "/Users/chaurasiak/.bun/_bun"
+

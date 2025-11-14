@@ -1,0 +1,24 @@
+# Q pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/bashrc.pre.bash" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/bashrc.pre.bash"
+
+# Load unified shell environment
+[ -f ~/.config/shell/env.sh ] && source ~/.config/shell/env.sh
+
+# FZF integration for bash
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Fig integration (if available)
+[[ -f "$HOME/fig-export/dotfiles/dotfile.bash" ]] && source "$HOME/fig-export/dotfiles/dotfile.bash"
+
+# Load universal shell functions
+[ -f ~/.config/shell/functions.sh ] && source ~/.config/shell/functions.sh
+
+# Load tool-specific environments
+[ -s "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+[ -s "$HOME/.local/bin/env" ] && source "$HOME/.local/bin/env"
+
+# Load standardized tool initialization
+[ -f ~/.config/shell/tools.sh ] && source ~/.config/shell/tools.sh
+
+# Q post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/bashrc.post.bash" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/bashrc.post.bash"

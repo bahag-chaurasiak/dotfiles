@@ -1,0 +1,14 @@
+{{- $name := "chaurasiak" -}}
+{{- $email := "krashna.chaurasia@bahag.com" -}}
+
+{{- if hasKey . "name" -}}
+{{-   $name = .name -}}
+{{- end -}}
+
+{{- if hasKey . "email" -}}
+{{-   $email = .email -}}
+{{- end -}}
+
+[data]
+    name = {{ $name | quote }}
+    email = {{ $email | quote }}
